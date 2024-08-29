@@ -20,15 +20,17 @@ public class TarefaEntity {
     private String descricao;
     private Boolean completa;
 
-//    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-//    @JoinColumn(name = "categoria_id", nullable = false)
-//    private CategoriaEntity categoria;
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private CategoriaEntity categoria;
 
-    public TarefaEntity(TarefaDto dto) {
+    public TarefaEntity(TarefaDto dto, CategoriaEntity categoria) {
         this.id = dto.getId();
         this.titulo = dto.getTitulo();
         this.descricao = dto.getDescricao();
         this.completa = dto.getCompleta();
+        this.categoria = categoria;
+
     }
 
     public TarefaEntity atualizaTarefa(TarefaDto dto) {
